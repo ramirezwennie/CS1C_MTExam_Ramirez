@@ -1,0 +1,8 @@
+let fullName = "DONBENBEN RAMIREZ";   
+let age = 21;            
+let favoriteNumber = 12;         
+let favoriteColor = "Back"; 
+console.log("Full Name:", fullName);
+console.log("Age:", age);
+console.log("Favorite Number:", favoriteNumber);
+console.log("Favorite Color:", favoriteColor);
