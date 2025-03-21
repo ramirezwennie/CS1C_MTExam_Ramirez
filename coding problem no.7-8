@@ -1,0 +1,85 @@
+let DSA = [];
+let PL = [];
+let Networks = [];
+
+
+function startEnrollment() {
+    let subject;
+    
+    while (true) {
+        
+        subject = prompt("Select a subject:\n(A) DSA\n(B) PL\n(C) Networks\n(D) Exit").toUpperCase();
+
+        if (subject === "D") {
+            
+            console.log("Final enrollment lists:");
+            console.log("DSA:", DSA);
+            console.log("PL:", PL);
+            console.log("Networks:", Networks);
+            break;
+        }
+
+        let selectedArray;
+        if (subject === "A") {
+            selectedArray = DSA;
+        } else if (subject === "B") {
+            selectedArray = PL;
+        } else if (subject === "C") {
+            selectedArray = Networks;
+        } else {
+            console.log("Invalid selection, please try again.");
+            continue;
+        }
+
+       
+        performOperations(selectedArray);
+    }
+}
+
+
+function performOperations(selectedArray) {
+    while (true) {
+        let operation = prompt("Select an option:\n(A) Enroll\n(B) Unenroll\n(C) Select Another Subject\n(D) Exit").toUpperCase();
+
+        if (operation === "A") {
+            
+            let studentName = prompt("Enter the student's name to enroll:");
+            selectedArray.push(studentName);
+            console.log(`Enrolled ${studentName} in the subject. Current list:`, selectedArray);
+
+        } else if (operation === "B") {
+            
+            if (selectedArray.length === 0) {
+                console.log("No students are enrolled in this subject.");
+            } else {
+                console.log("Currently enrolled students:", selectedArray);
+                let studentName = prompt("Enter the student's name to unenroll:");
+                
+                let index = selectedArray.indexOf(studentName);
+                if (index !== -1) {
+                    selectedArray.splice(index, 1);
+                    console.log(`Unenrolled ${studentName}. Updated list:`, selectedArray);
+                } else {
+                    console.log("Student not found.");
+                }
+            }
+
+        } else if (operation === "C") {
+            
+            break;
+
+        } else if (operation === "D") {
+            
+            console.log("Final enrollment lists:");
+            console.log("DSA:", DSA);
+            console.log("PL:", PL);
+            console.log("Networks:", Networks);
+            return;
+
+        } else {
+            console.log("Invalid selection, please try again.");
+        }
+    }
+}
+
+startEnrollment();
